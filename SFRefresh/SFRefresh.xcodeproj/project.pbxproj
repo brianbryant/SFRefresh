@@ -11,6 +11,8 @@
 		D326B4AE2060920700D8EAEE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D326B4AC2060920700D8EAEE /* Main.storyboard */; };
 		D326B4B02060920700D8EAEE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D326B4AF2060920700D8EAEE /* Assets.xcassets */; };
 		D326B4B32060920700D8EAEE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D326B4B12060920700D8EAEE /* LaunchScreen.storyboard */; };
+		D34BA00320A1A7D9005FF2E6 /* RefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34BA00220A1A7D9005FF2E6 /* RefreshView.swift */; };
+		D34BA00520A1B3AE005FF2E6 /* RefreshItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34BA00420A1B3AE005FF2E6 /* RefreshItem.swift */; };
 		D3752F142067D6EC00D548BC /* RefreshingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3752F132067D6EC00D548BC /* RefreshingTableViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -21,6 +23,8 @@
 		D326B4AF2060920700D8EAEE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D326B4B22060920700D8EAEE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D326B4B42060920700D8EAEE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D34BA00220A1A7D9005FF2E6 /* RefreshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshView.swift; sourceTree = "<group>"; };
+		D34BA00420A1B3AE005FF2E6 /* RefreshItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshItem.swift; sourceTree = "<group>"; };
 		D3752F132067D6EC00D548BC /* RefreshingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshingTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -60,6 +64,8 @@
 				D326B4B12060920700D8EAEE /* LaunchScreen.storyboard */,
 				D326B4B42060920700D8EAEE /* Info.plist */,
 				D3752F132067D6EC00D548BC /* RefreshingTableViewController.swift */,
+				D34BA00220A1A7D9005FF2E6 /* RefreshView.swift */,
+				D34BA00420A1B3AE005FF2E6 /* RefreshItem.swift */,
 			);
 			path = SFRefresh;
 			sourceTree = "<group>";
@@ -136,7 +142,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D34BA00320A1A7D9005FF2E6 /* RefreshView.swift in Sources */,
 				D3752F142067D6EC00D548BC /* RefreshingTableViewController.swift in Sources */,
+				D34BA00520A1B3AE005FF2E6 /* RefreshItem.swift in Sources */,
 				D326B4A92060920700D8EAEE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -277,6 +285,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8ZZS76SEL5;
 				INFOPLIST_FILE = SFRefresh/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.brian.SFRefresh;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -292,6 +301,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8ZZS76SEL5;
 				INFOPLIST_FILE = SFRefresh/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.brian.SFRefresh;
 				PRODUCT_NAME = "$(TARGET_NAME)";
