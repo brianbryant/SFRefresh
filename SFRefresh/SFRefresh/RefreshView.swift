@@ -10,6 +10,10 @@ import UIKit
 
 let kSceneHeight: CGFloat = 120
 
+protocol RefreshViewDelegate: class {
+    func refreshViewDidFinish(refreshView: RefreshView)
+}
+
 class RefreshView: UIView {
 
     private unowned var scrollView: UIScrollView
@@ -17,9 +21,13 @@ class RefreshView: UIView {
     private var progress: CGFloat = 0
     var refreshItems = [RefreshItem]()
     
+    var isRefreshing = false
+    weak var delegate: RefreshViewDelegate?
+    
     init(frame: CGRect, scrollView: UIScrollView) {
         self.scrollView = scrollView
         super.init(frame: frame)
+        clipsToBounds = true
         updateBackgroundColor()
         setupRefreshItems()
     }
@@ -58,6 +66,13 @@ extension RefreshView {
 extension RefreshView: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        print("scrollView.contentInset.top", scrollView.contentInset.top, "scrollView.contentOffset.y = ", scrollView.contentOffset.y)
+        
+        if isRefreshing {
+            return
+        }
+        
         // 1. 刷新视图可见区域的高度
         let refreshViewVisibleHeight = tableViewContentOffsetY - scrollView.contentOffset.y
         // 2. 计算当前的滚动进度
@@ -66,6 +81,41 @@ extension RefreshView: UIScrollViewDelegate {
         updateBackgroundColor()
         // 4. 根据进度改变RefreshItem的位置
         updateRefreshItemPositions()
+    }
+    
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        print("isRefreshing = ", isRefreshing, "progress = ", progress)
+        if !isRefreshing && progress == 1 {
+            print("begin scrollView.contentOffset.y", scrollView.contentOffset.y, "targetContentOffset.pointee.y = ", targetContentOffset.pointee.y)
+            beginRefreshing()
+            targetContentOffset.pointee = CGPoint(x: 0, y: -scrollView.contentInset.top)
+//            targetContentOffset.pointee.y -= scrollView.contentInset.top
+//            scrollView.setContentOffset(CGPoint(x: 0, y: -scrollView.contentInset.top), animated: true)
+            print("scrollView.contentOffset.y", scrollView.contentOffset.y, "targetContentOffset.pointee = ", targetContentOffset.pointee)
+            delegate?.refreshViewDidFinish(refreshView: self)
+        }
+    }
+}
+
+extension RefreshView {
+    
+    func beginRefreshing() {
+        isRefreshing = true
+        UIView.animate(withDuration: 2, delay: 0, options: .curveEaseInOut, animations: {
+            self.scrollView.contentInset.top += kSceneHeight
+        }) { (isFinished) in
+            print("begin isFinished = ", isFinished)
+        }
+    }
+    
+    func endRefreshing() {
+        UIView.animate(withDuration: 0.4, delay: 0, options: .curveEaseInOut, animations: {
+            self.scrollView.contentInset.top -= kSceneHeight
+        }) { (isFinished) in
+            print("end isFinished = ", isFinished)
+            self.isRefreshing = false
+        }
     }
 }
 

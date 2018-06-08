@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--自定义下拉刷新控件-->
+        <!--Pull To Refresh-->
         <scene sceneID="ztC-8a-Q8g">
             <objects>
                 <tableViewController id="kxR-zF-BYz" customClass="RefreshingTableViewController" customModule="SFRefresh" customModuleProvider="target" sceneMemberID="viewController">
@@ -41,7 +41,7 @@
                             <outlet property="delegate" destination="kxR-zF-BYz" id="2SG-do-7kY"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="自定义下拉刷新控件" id="NbA-Fn-fVg"/>
+                    <navigationItem key="navigationItem" title="Pull To Refresh" id="NbA-Fn-fVg"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o6L-nc-2r2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
